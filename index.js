@@ -321,6 +321,16 @@ console.timeEnd("memoized function time");
 */
 
 // CODE HERE
+class Sum {
+  constructor () {
+    this.cache = {}
+  }
+  add(num) {
+   
+
+  }
+  }
+}
 
 /*
     Copy and paste the method outside the class and
