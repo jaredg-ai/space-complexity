@@ -254,12 +254,20 @@ function countLettersRoundTwo(str) {
 class Factorial {
   constructor () {
     this.cache = {}
-     calcFac: function(num) {
-      for (i = 0; i < cache.length; i++)
     }
+    calcFac(num) {
+      if (this.cache(num)) {
+        return this.cache(num)
+      } else {
+        let answer = num * (num - 1)
+          for (let i = num - 2; i >= 1; i--) {
+           answer *= i
+          }
+          this.cache(num) = answer
+          return answer
+      }
   }
 }
-
 /* 
   We want to test a non-memoized version of this too, 
   so copy and paster your calcFac function and save it 
@@ -267,9 +275,14 @@ class Factorial {
   (psst...don't forget to uncomment it)
 */
 
-// function noCacheCalcFac(num) {
-    //CODE HERE
-// }
+function noCacheCalcFac(num) {
+      let answer = num * (num - 1)
+        for (let i = num - 2; i >= 1; i--) {
+         answer *= i
+        }
+        return answer
+    }
+
 
 /*
   The logs below will show you how long these functions
@@ -279,22 +292,22 @@ class Factorial {
   need to comment out some of the functions above!)
 */
 
-const myFac = // CREATE A NEW INSTANCE OF THE FACTORIAL CLASS
+const myFac = new Factorial()
 
 console.time("not memoized function time");
 console.log("not memoized function");
-console.log(// CALL NOCACHECALCFAC PASSING IN 8);
-console.log(// CALL NOCACHECALCFAC PASSING IN 8);
-console.log(// CALL NOCACHECALCFAC PASSING IN 8);
-console.log(// CALL NOCACHECALCFAC PASSING IN 8);
+console.log(noCacheCalcFac(8));
+console.log(noCacheCalcFac(8));
+console.log(noCacheCalcFac(8));
+console.log(noCacheCalcFac(8));
 console.timeEnd("not memoized function time");
 
 console.log("memoized function");
 console.time("memoized function time");
-console.log(// CALL THE CALCFAC METHOD OFF OF MYFAC 8);
-console.log(// CALL THE CALCFAC METHOD OFF OF MYFAC 8);
-console.log(// CALL THE CALCFAC METHOD OFF OF MYFAC 8);
-console.log(// CALL THE CALCFAC METHOD OFF OF MYFAC 8);
+console.log(myFac.calcFac(8));
+console.log(myFac.calcFac(8));
+console.log(myFac.calcFac(8));
+console.log(myFac.calcFac(8));
 console.timeEnd("memoized function time");
 
 
