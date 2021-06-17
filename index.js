@@ -251,7 +251,14 @@ function countLettersRoundTwo(str) {
 */
 
 // CODE HERE 
-
+class Factorial {
+  constructor () {
+    this.cache = {}
+     calcFac: function(num) {
+      for (i = 0; i < cache.length; i++)
+    }
+  }
+}
 
 /* 
   We want to test a non-memoized version of this too, 
